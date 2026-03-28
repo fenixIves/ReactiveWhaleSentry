@@ -78,8 +78,8 @@ export default function Hero() {
               Start Monitoring
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button 
-              onClick={() => scrollToSection('#features')}
+            <button
+              onClick={() => window.open("https://github.com/fenixIves/ReactiveWhaleSentry", "_blank")}
               className="btn-secondary flex items-center justify-center gap-2"
             >
               <Play className="w-5 h-5" />

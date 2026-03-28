@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { useRouter } from "next/navigation";
 import { Menu, X, Waves } from 'lucide-react';
 
 const navLinks = [
@@ -12,6 +13,7 @@ const navLinks = [
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,8 +82,8 @@ export default function Navigation() {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <button 
-                onClick={() => scrollToSection('#contact')}
+              <button
+                onClick={() => router.push("/demopage")}
                 className="btn-primary text-sm py-2.5 px-6"
               >
                 Start Monitoring
@@ -128,8 +130,8 @@ export default function Navigation() {
                 {link.label}
               </button>
             ))}
-            <button 
-              onClick={() => scrollToSection('#contact')}
+            <button
+              onClick={() => router.push("/demopage")}
               className="btn-primary text-center mt-4"
             >
               Start Monitoring
