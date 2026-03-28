@@ -3,25 +3,69 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  --paper: #f5f7f2;
-  --ink: #0f172a;
-  --ocean: #0b6d77;
-  --sun: #f59e0b;
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 195 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 195 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 195 100% 50%;
+  --radius: 0.75rem;
 }
 
 body {
-  @apply bg-mist text-ink font-sans;
-  background-image:
-    radial-gradient(circle at top left, rgba(14, 116, 144, 0.14), transparent 38%),
-    radial-gradient(circle at 80% 10%, rgba(245, 158, 11, 0.2), transparent 30%),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  @apply bg-background text-foreground font-sans antialiased;
 }
 
-.panel {
-  @apply rounded-3xl border border-black/5 bg-white/80 shadow-panel backdrop-blur;
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-[#0066CC] to-[#00D4FF] text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply border border-white/30 text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/10 transition-all;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 50;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
 }
 
-.panel-strong {
-  @apply rounded-3xl border border-white/60 bg-white/90 shadow-glow backdrop-blur;
+@layer utilities {
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  }
 }
