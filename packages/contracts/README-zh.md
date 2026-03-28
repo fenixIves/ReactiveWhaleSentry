@@ -586,24 +586,10 @@ export const deployedAddresses = {
 
 这个脚本本身逻辑很简单，只是把环境变量整理后写入共享地址导出文件。
 
-## 11. 前端到底读了什么
 
-前端页面核心读取逻辑在 `apps/web/src/app/page.tsx`，主要读取：
+## 11. 常见错误与问题总结
 
-- `WhaleDataVault.getRecordCount()`
-- `WhaleDataVault.getRecord(index)`
-- `StrategyExecutor.getExecutionCount()`
-- `StrategyExecutor.currentMode()`
-
-因此前端地址同步失败时，最直接的表现是：
-
-- 页面显示 `UNDEPLOYED`
-- 页面显示 `RPC ERROR`
-- 记录数和执行数一直是 0
-
-## 12. 常见错误与问题总结
-
-### 12.1 源链有事件，目标链没有记录
+### 11.1 源链有事件，目标链没有记录
 
 通常排查顺序如下：
 
@@ -628,7 +614,7 @@ cast send $WHALE_REACTIVE_CONTRACT "coverDebt()" \
   --private-key $REACTIVE_PRIVATE_KEY
 ```
 
-### 12.2 目标链报 `PaymentFailure` / `CallbackFailure`
+### 11.2 目标链报 `PaymentFailure` / `CallbackFailure`
 
 原因通常是 `WhaleCallbackReceiver` 没钱，callback proxy 扣费失败。
 
@@ -640,7 +626,7 @@ DESTINATION_RECEIVER_FUND=10000000000000000
 
 也就是部署时给 receiver 充值 `0.01 ETH`。如果你重新部署，请保留这个值或更高。
 
-### 12.3 `unexpected reactive sender`
+### 11.3 `unexpected reactive sender`
 
 这是 `WhaleCallbackReceiver` 的保护逻辑在生效，说明：
 
@@ -655,13 +641,13 @@ cast send $WHALE_CALLBACK_RECEIVER "setExpectedReactive(address)" $WHALE_REACTIV
   --private-key $DESTINATION_PRIVATE_KEY
 ```
 
-### 12.4 `authorized sender only`
+### 11.4 `authorized sender only`
 
 这说明目标链调用者不是官方 callback proxy，或 `DESTINATION_CALLBACK_PROXY_ADDR` 配置错了。
 
 `WhaleCallbackReceiver` 继承了 `AbstractCallback`，入口权限不是任意地址都能绕过的。
 
-### 12.5 模拟事件发出后模式不符合预期
+### 11.5 模拟事件发出后模式不符合预期
 
 这是最容易误判的一点。
 
@@ -682,7 +668,7 @@ if (amount > 0 ether) {
 - `amount > 0` 时不会进入 `Grid`
 - 想测试 `Grid` 必须令 `amount == 0`
 
-### 12.6 前端页面还在读旧地址
+### 11.6 前端页面还在读旧地址
 
 检查：
 
@@ -690,7 +676,7 @@ if (amount > 0 ether) {
 2. `packages/abi/src/addresses.ts` 是否已经重新导出。
 3. 前端是否重新启动。
 
-### 12.7 `.env` 格式不规范
+### 11.7 `.env` 格式不规范
 
 当前仓库 `.env` 中有少数键前面带空格。某些工具会自动容忍，但不建议依赖这种行为。
 
@@ -703,7 +689,7 @@ NEXT_PUBLIC_WHALE_DATA_VAULT=0x...
 
 不要在键名前留空格，也不要把私钥提交到版本库。
 
-## 13. 相关文件清单
+## 12. 相关文件清单
 
 ### 合约
 

@@ -6,7 +6,7 @@ const navLinks = [
   { label: 'Features', href: '#features' },
   { label: 'Technology', href: '#technology' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'Docs', href: '#docs' },
+  { label: 'Docs', href: '#Images' },
 ];
 
 export default function Navigation() {
