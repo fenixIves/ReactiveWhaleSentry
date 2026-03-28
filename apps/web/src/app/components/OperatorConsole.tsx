@@ -6,11 +6,11 @@ import { useState } from "react";
 import { isAddress, isHex, pad, parseEther, stringToHex } from "viem";
 import { useAccount, useSwitchChain, useWriteContract } from "wagmi";
 
-const toBytes32 = (value: string) => {
+const toBytes32 = (value: string): `0x${string}` => {
   const trimmed = value.trim();
-  if (trimmed.length === 0) return "0x".padEnd(66, "0");
+  if (trimmed.length === 0) return "0x".padEnd(66, "0") as `0x${string}`;
   if (isHex(trimmed) && trimmed.length === 66) return trimmed as `0x${string}`;
-  return pad(stringToHex(trimmed), { size: 32 });
+  return pad(stringToHex(trimmed), { size: 32 }) as `0x${string}`;
 };
 
 const parseSignedEther = (value: string) => {
