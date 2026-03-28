@@ -2,6 +2,7 @@ import { deployedAddresses, strategyExecutorAbi, whaleDataVaultAbi } from "@hack
 import { appConfig } from "@hackathon/config";
 import { createPublicClient, formatEther, http } from "viem";
 import DemoMissionControl from "../components/DemoMissionControl";
+import OceanBackground from "@/app/components/OceanBackground";
 
 const zeroAddress = "0x0000000000000000000000000000000000000000";
 const modeLabels = ["OBSERVE", "HEDGE", "GRID", "PAUSED"] as const;
@@ -101,9 +102,9 @@ export default async function DemoPage() {
 
   return (
     <main className="relative min-h-screen overflow-hidden px-6 py-10 md:px-12 lg:px-16">
-      <div className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-ember/15 blur-[120px]" />
-      <div className="pointer-events-none absolute right-0 top-24 h-80 w-80 rounded-full bg-tide/60 blur-[140px]" />
-      <div className="mx-auto max-w-7xl">
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <OceanBackground />
         <DemoMissionControl
           chainId={chainId}
           originEmitter={originEmitter}

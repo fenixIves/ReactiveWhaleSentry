@@ -36,12 +36,12 @@ export default function Hero() {
           </div>
 
           {/* Main Title */}
-          <h1 
-            className={`text-responsive-hero font-bold mb-6 transition-all duration-1000 delay-200 ${
+          <h1
+            className={`text-responsive-hero font-bold text-8xl mb-6 transition-all duration-1000 delay-200 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <span className="text-white">Whale</span>
+            <span className="text-white">Whale </span>
             <span className="text-[#00D4FF] text-glow">Sentry</span>
           </h1>
 
