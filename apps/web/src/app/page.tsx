@@ -95,12 +95,8 @@ async function loadDashboard() {
 }
 
 export default async function HomePage() {
-  const data = await loadDashboard();
-  const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL ?? appConfig.rpcUrl;
   const chainId = Number(process.env.NEXT_PUBLIC_CHAIN_ID ?? appConfig.defaultChainId);
-  const whaleDataVault = process.env.NEXT_PUBLIC_WHALE_DATA_VAULT ?? deployedAddresses.whaleDataVault;
   const originEmitter = process.env.NEXT_PUBLIC_ORIGIN_EMITTER ?? deployedAddresses.originEmitter;
-  const strategyExecutor = process.env.NEXT_PUBLIC_STRATEGY_EXECUTOR ?? deployedAddresses.strategyExecutor;
   const blockExplorerUrl = process.env.NEXT_PUBLIC_BLOCK_EXPLORER_URL ?? "https://sepolia.basescan.org";
 
   return (
@@ -109,13 +105,9 @@ export default async function HomePage() {
       <div className="pointer-events-none absolute right-0 top-24 h-80 w-80 rounded-full bg-tide/60 blur-[140px]" />
       <div className="mx-auto max-w-7xl">
         <DemoMissionControl
-          rpcUrl={rpcUrl}
           chainId={chainId}
           originEmitter={originEmitter}
-          whaleDataVault={whaleDataVault}
-          strategyExecutor={strategyExecutor}
           blockExplorerUrl={blockExplorerUrl}
-          initial={data}
         />
       </div>
     </main>
