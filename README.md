@@ -3,10 +3,12 @@
 ![Home Page 1](./Images/home1.png)
 ![Home Page 2](./Images/home2.png)
 ![Demo](./Images/demo.png)
+![Demo](./Images/demo2.png)
+Demo video: [WhaleDemoVideo.mov](./WhaleDemoVideo.mov)
 
-Smart Whale Sentinel is a reactive cross-chain risk dashboard built for the Reactive Network hackathon.
+**Smart Whale Sentinel is a reactive cross-chain risk dashboard built for the Reactive Network hackathon.**
 
-It turns a whale event on the origin chain into a verifiable on-chain response on the destination chain:
+It turns a whale event on the origin chain into a **verifiable on-chain response** on the destination chain:
 
 1. a whale signal is emitted on the origin chain,
 2. Reactive Network listens to that signal,
@@ -17,16 +19,16 @@ It turns a whale event on the origin chain into a verifiable on-chain response o
 
 ## What Problem We Solve
 
-Most "smart monitoring" systems are not actually trustless.
+Most "smart monitoring" systems are **not actually trustless**.
 
-In a common setup, a backend bot must:
+In a common setup, a **backend bot** must:
 
 - watch the source chain,
 - decode events,
 - decide whether action is needed,
 - send a follow-up transaction on another chain.
 
-That creates several problems:
+That creates several **problems**:
 
 - centralized infrastructure dependence,
 - private key custody risk,
@@ -34,9 +36,9 @@ That creates several problems:
 - weak auditability,
 - difficulty proving that the downstream response truly came from the original on-chain trigger.
 
-Smart Whale Sentinel replaces that fragile off-chain listener layer with a reactive contract architecture.
+Smart Whale Sentinel replaces that fragile off-chain listener layer with a **reactive contract architecture**.
 
-The result is a cleaner and more credible flow:
+The result is a **cleaner and more credible** flow:
 
 - the whale event itself becomes the trigger,
 - Reactive Network becomes the cross-chain automation layer,
@@ -45,9 +47,9 @@ The result is a cleaner and more credible flow:
 
 ## Why This Project Is Strong
 
-This project is not just a dashboard. It demonstrates a complete event-driven cross-chain control loop.
+This project is not just a dashboard. It demonstrates a **complete event-driven cross-chain control loop**.
 
-### Core advantages
+### Core Advantages
 
 - **Reactive by design**: no centralized bot is required to monitor the origin event and manually relay it.
 - **Verifiable execution path**: origin event, reactive callback, destination write, and strategy execution all leave a chain-level trace.
@@ -70,7 +72,7 @@ Reactive-DApp-Hackathon
 
 ## Contract Architecture
 
-The contract system is the heart of the project.
+The contract system is the **heart of the project**.
 
 It is intentionally split into three layers.
 
@@ -165,14 +167,14 @@ This is the exact story the demo tells.
 
 The project has already been demonstrated successfully on the current deployed environment.
 
-### Latest successful example
+### Latest Successful Example
 
 - Origin tx:
   `0x2599192a7008b6f12be3982c158e0af04415dd560656c4f72ec1e8199ce5c6a8`
 - Destination tx:
   `0xCD64FF27A5A9F2919031F98DB0C593982A19905D41062A7C05EE5EE5D6494AB6`
 
-### What this successful run proves
+### What This Successful Run Proves
 
 - the frontend can trigger the origin whale signal,
 - Reactive Network can observe and relay that event,
@@ -185,7 +187,7 @@ If the block explorer URL is configured in the frontend, both transactions can b
 
 The frontend has been intentionally shaped for review clarity.
 
-It focuses on a simple judge-friendly story:
+It focuses on a **simple judge-friendly story**:
 
 - trigger the origin whale event,
 - show the origin transaction,
@@ -212,7 +214,7 @@ For deeper implementation details, use the documents below.
 
 ## Why Judges Should Care
 
-Smart Whale Sentinel is a strong hackathon project because it demonstrates something concrete and credible:
+Smart Whale Sentinel is a strong hackathon project because it demonstrates something **concrete and credible**:
 
 - a real on-chain event source,
 - a real reactive listener layer,
@@ -221,7 +223,7 @@ Smart Whale Sentinel is a strong hackathon project because it demonstrates somet
 - a real strategy execution layer,
 - and a frontend designed to make that full story understandable.
 
-This project shows how Reactive Network can be used for more than a toy event demo.
+This project shows how **Reactive Network** can be used for more than a toy event demo.
 
 It illustrates a practical cross-chain automation pattern that can be adapted to:
 
